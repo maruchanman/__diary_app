@@ -1,37 +1,30 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {
   View,
+  Text,
   Image,
-  Text
+  TouchableWithoutFeedback
 } from 'react-native'
+import Styles from '../Settings/Styles.js'
+import Routes from '../Settings/Routes.js'
 
-export default class DiaryCard extends Component {
-  render() {
-    return (
-      <View style={styles.wrapper}>
-        <Image
-          resizeMode="cover"
-          source={{uri: this.props.image}}
-          style={styles.image}>
-        </Image>
-      </View>
-    )
-  }
-}
+const styles = Styles.DiaryCard
 
-const styles = {
-  wrapper: {
-    width: 120,
-    height: 120,
-    margin: 1
-  },
-  image: {
-    flex: 1,
-    width: null,
-    height: null
-  },
-  date: {
-    fontSize: 24,
-    color: 'red'
-  }
-}
+const DiaryCard = props => (
+  <TouchableWithoutFeedback
+    onPress={() => props.navigator.push(Object.assign(Routes["Diary"], {data: props.data}))}>
+    <View style={styles.wrapper}>
+      <Image
+        resizeMode="cover"
+        source={{uri: props.data.photos[0]}}
+        style={styles.image}>
+        <View style={styles.textBox}>
+          <Text style={styles.day}>{props.data.day}</Text>
+          <Text style={styles.month}>{props.data.month}.{props.data.year}</Text>
+        </View>
+      </Image>
+    </View>
+  </TouchableWithoutFeedback>
+)
+
+export default DiaryCard

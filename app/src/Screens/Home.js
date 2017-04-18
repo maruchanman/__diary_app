@@ -1,24 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
-  View,
-  Text
+  ScrollView
 } from 'react-native';
-
 import Styles from '../Settings/Styles.js'
 import DiaryCard from '../Components/DiaryCard.js'
 
-export default class Home extends Component {
-  render() {
-    return (
-      <View style={styles.wrapper}>
-        {this.props.data.map((diary) => <DiaryCard data={diary}/>)}
-      </View>
-    )
-  }
-}
+const styles = Styles.Home
 
-const styles = {
-  wrapper: {
-    padding: 10
-  }
-}
+const Home = props => (
+  <ScrollView contentContainerStyle={styles.wrapper}>
+    {props.data.map((diary) =>
+      <DiaryCard key={diary.diaryID} data={diary} navigator={props.navigator}/>)}
+  </ScrollView>
+)
+
+export default Home
