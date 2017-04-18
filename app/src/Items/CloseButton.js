@@ -6,10 +6,10 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Styles from '../Settings/Styles.js'
 
-const BackButton = props => (
+const CloseButton = props => (
   <TouchableWithoutFeedback onPress={() => props.navigator.popToTop()}>
     <Icon name="times" size={20} style={Styles.icon}/>
   </TouchableWithoutFeedback>
 )
 
-export default BackButton
+export default CloseButton
