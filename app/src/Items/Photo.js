@@ -16,7 +16,7 @@ const Choiced = props => (
 )
 
 const Photo = props => (
-  <TouchableWithoutFeedback name={props.name} onPress={() => props.on(props.uri)}>
+  <TouchableWithoutFeedback onPress={() => props.on(props.uri)}>
     <Image
       resizeMode="cover"
       source={{uri: props.uri}}

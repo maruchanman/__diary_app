@@ -10,6 +10,7 @@ import ImageSwiper from '../Items/ImageSwiper.js'
 import Routes from '../Settings/Routes.js'
 import Styles from '../Settings/Styles.js'
 import Constants from '../Settings/Constants.js'
+import Fetch from '../Actions/Fetch.js'
 
 const styles = Styles.Form
 
@@ -18,7 +19,8 @@ export default class Memo extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      text: ""
+      text: "",
+      photos: props.photos
     }
   }
 
@@ -27,14 +29,20 @@ export default class Memo extends Component {
   }
 
   submit() {
-    console.log(this.state.text)
+    const formData = new FormData()
+    this.state.photos.map((photo, ix) => formData.append(
+      "photo" + ix, {uri: photo, name: "photo.png"}))
+    formData.append("text", this.state.text)
+    formData.append("user", this.props.deviceID)
+    Fetch.uploadDiary("/upload", formData)
+      .then(data => console.log(data))
   }
 
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.upper}>
-          <ImageSwiper photos={this.props.photos}/>
+          <ImageSwiper photos={this.state.photos}/>
           <TextInput
             autoFocus={true}
             multiline={true}

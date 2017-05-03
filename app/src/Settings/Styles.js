@@ -3,7 +3,7 @@ import { Dimensions } from 'react-native'
 
 const Constant = {
   width: Dimensions.get("window").width,
-  imageColor: 'green',
+  imageColor: '#2EB9F4',
   accentColor: 'white',
   opacityColor: 'rgba(0, 0, 0, 0.3)',
   headerHeight: 60

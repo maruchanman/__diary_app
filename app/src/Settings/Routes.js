@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Text } from 'react-native'
+import DeviceInfo from 'react-native-device-info'
+
 import Home from '../Screens/Home.js'
 import Diary from '../Screens/Diary.js'
 import PhotoPicker from '../Screens/PhotoPicker.js'
@@ -14,6 +16,7 @@ import CloseButton from '../Items/CloseButton.js'
 import Fetch from '../Actions/Fetch.js'
 
 const styles = Styles.Route
+const deviceID = DeviceInfo.getUniqueID()
 
 const Routes = {
   Home: {
@@ -39,7 +42,8 @@ const Routes = {
   },
   Memo: {
     name: 'Memo',
-    component: (route, navigator) => <Memo navigator={navigator} photos={route.photos} />,
+    component: (route, navigator) => (
+      <Memo navigator={navigator} photos={route.photos} deviceID={deviceID} />),
     rightButton: (route, navigator) => <CloseButton navigator={navigator}/>,
     leftButton: (route, navigator) => <BackButton navigator={navigator}/>,
     title: (route, navigator) => <Text style={styles.title}>Memo</Text>
