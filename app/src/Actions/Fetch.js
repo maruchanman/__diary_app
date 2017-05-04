@@ -1,12 +1,12 @@
 import diary from '../Sample/diary.json'
 import Constants from '../Settings/Constants.js'
 
-function diaryList() {
-  return diary
+function diaryFromUser(userID) {
+  return fetch(Constants.url + "/" + userID)
+    .then(res => res.json())
 }
 
 function post(path, data) {
-  console.log(Constants.url + path)
   return fetch(
     Constants.url + path,
     {method: 'POST', body: data}
@@ -14,7 +14,7 @@ function post(path, data) {
 }
 
 var Fetch = {
-  diaryList: diaryList(),
+  diaryFromUser: (userID) => diaryFromUser(userID),
   uploadDiary: (path, data) => post(path, data)
 }
 

@@ -3,9 +3,9 @@ import { Dimensions } from 'react-native'
 
 const Constant = {
   width: Dimensions.get("window").width,
-  imageColor: '#2EB9F4',
-  accentColor: 'white',
-  opacityColor: 'rgba(0, 0, 0, 0.3)',
+  imageColor: 'white',
+  accentColor: '#bdc3c7',
+  opacityColor: 'rgba(0, 0, 0, 0.2)',
   headerHeight: 60
 }
 
@@ -17,7 +17,7 @@ const Styles = {
   },
   Route: {
     wrapper: {
-      backgroundColor: '#fff',
+      backgroundColor: 'whitesmoke',
       paddingTop: Constant.headerHeight
     },
     header: {
@@ -70,7 +70,7 @@ const Styles = {
     },
     text: {
       textAlign: 'center',
-      color: Constant.accentColor,
+      color: Constant.imageColor,
       fontSize: 24
     },
     box: {
@@ -82,6 +82,14 @@ const Styles = {
       flex: 1,
       paddingVertical: 20,
       paddingHorizontal: 40
+    },
+    loading: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      margin: 0
     }
   },
   Photo: {
@@ -94,7 +102,7 @@ const Styles = {
     choiced: {
       width: '100%',
       height: '100%',
-      backgroundColor: 'rgba(0, 0, 0, 0.5)'
+      backgroundColor: 'rgba(0, 0, 0, 0.8)'
     }
   },
   DiaryCard: {

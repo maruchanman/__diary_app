@@ -13,32 +13,32 @@ import BackButton from '../Items/BackButton.js'
 import AddButton from '../Items/AddButton.js'
 import CloseButton from '../Items/CloseButton.js'
 
-import Fetch from '../Actions/Fetch.js'
-
 const styles = Styles.Route
 const deviceID = DeviceInfo.getUniqueID()
 
 const Routes = {
   Home: {
     name: 'Home',
-    component: (route, navigator) => <Home navigator={navigator} data={Fetch.diaryList}/>,
+    component: (route, navigator) => (
+      <Home navigator={navigator} deviceID={deviceID}/>),
     rightButton: (route, navigator) => <AddButton navigator={navigator}/>,
     leftButton: (route, navigator) => null,
-    title: (route, navigator) => <Text style={styles.title}>LIFE</Text>
+    title: (route, navigator) => <Text style={styles.title}>Wondays</Text>
   },
   Diary: {
     name: 'Diary',
     component: (route, navigator) => <Diary navigator={navigator} data={route.data} />,
     rightButton: (route, navigator) => null,
     leftButton: (route, navigator) => <BackButton navigator={navigator}/>,
-    title: (route, navigator) => <Text style={styles.title}>Diary</Text>
+    title: (route, navigator) => (
+      <Text style={styles.title}>{route.data.month}.{route.data.day}</Text>)
   },
   PhotoPicker: {
     name: 'PhotoPicker',
     component: (route, navigator) => <PhotoPicker navigator={navigator}/>,
     rightButton: (route, navigator) => <CloseButton navigator={navigator}/>,
     leftButton: (route, navigator) => null,
-    title: (route, navigator) => <Text style={styles.title}>PhotoPicker</Text>
+    title: (route, navigator) => <Text style={styles.title}>写真を選択(5枚まで)</Text>
   },
   Memo: {
     name: 'Memo',
@@ -46,7 +46,7 @@ const Routes = {
       <Memo navigator={navigator} photos={route.photos} deviceID={deviceID} />),
     rightButton: (route, navigator) => <CloseButton navigator={navigator}/>,
     leftButton: (route, navigator) => <BackButton navigator={navigator}/>,
-    title: (route, navigator) => <Text style={styles.title}>Memo</Text>
+    title: (route, navigator) => <Text style={styles.title}>メモ(200文字まで)</Text>
   },
   initialRoute: 'Home'
 }

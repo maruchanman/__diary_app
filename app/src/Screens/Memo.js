@@ -3,6 +3,7 @@ import {
   View,
   Text,
   TextInput,
+  ActivityIndicator,
   TouchableWithoutFeedback
 } from 'react-native'
 
@@ -20,7 +21,8 @@ export default class Memo extends Component {
     super(props)
     this.state = {
       text: "",
-      photos: props.photos
+      photos: props.photos,
+      loading: false
     }
   }
 
@@ -29,18 +31,19 @@ export default class Memo extends Component {
   }
 
   submit() {
+    this.setState({loading: true})
     const formData = new FormData()
     this.state.photos.map((photo, ix) => formData.append(
       "photo" + ix, {uri: photo, name: "photo.png"}))
     formData.append("text", this.state.text)
     formData.append("user", this.props.deviceID)
     Fetch.uploadDiary("/upload", formData)
-      .then(data => console.log(data))
+      .then(data => this.props.navigator.popToTop())
   }
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.container} pointerEvents={this.state.loading ? "none" : "auto"}>
         <View style={styles.upper}>
           <ImageSwiper photos={this.state.photos}/>
           <TextInput
@@ -55,6 +58,14 @@ export default class Memo extends Component {
             <View style={styles.component}><Text style={styles.text}>投稿</Text></View>
           </TouchableWithoutFeedback>
         </View>
+        {this.state.loading ? (
+          <ActivityIndicator
+            color="white"
+            animating={this.state.loading}
+            style={styles.loading}
+            hidesWhenStopped={true}
+            size="large"/>
+        ) : null}
       </View>
     )
   }

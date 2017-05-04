@@ -8,9 +8,9 @@ class Connect():
     def __init__(self):
         pass
 
-    def connect(self, db):
+    def connect(self):
         connection = {
-            "db": 'gigs',
+            "db": 'wondays',
             "host": os.getenv('DB_HOST'),
             "user": "kadoya",
             "passwd": os.getenv('DB_PASS'),
