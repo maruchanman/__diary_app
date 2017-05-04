@@ -10,7 +10,7 @@ from modules.util.utils import *
 app = Flask(__name__)
 CURRENTPATH = os.path.dirname(__file__)
 
-@app.route("/<userID>", methods=["GET"])
+@app.route("/wondays/<userID>", methods=["GET"])
 def diaries(userID):
     data = {}
     diary_list, photo_list = select_diaries(userID)
@@ -23,7 +23,7 @@ def diaries(userID):
             "/Users/hacker/work/life/flask/photos/{}/{}.png".format(userID, fname))
     return jsonify(data)
 
-@app.route('/upload', methods=['POST'])
+@app.route('/wondays/upload', methods=['POST'])
 def upload():
     text = request.form.get("text")
     userID = request.form.get("user")
