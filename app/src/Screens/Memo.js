@@ -4,8 +4,10 @@ import {
   Text,
   TextInput,
   ActivityIndicator,
+  KeyboardAvoidingView,
   TouchableWithoutFeedback
 } from 'react-native'
+import ImageResizer from 'react-native-image-resizer'
 
 import ImageSwiper from '../Items/ImageSwiper.js'
 import Routes from '../Settings/Routes.js'
@@ -33,27 +35,27 @@ export default class Memo extends Component {
   submit() {
     this.setState({loading: true})
     const formData = new FormData()
-    this.state.photos.map((photo, ix) => formData.append(
-      "photo" + ix, {uri: photo, name: "photo.png"}))
+    this.state.photos.map((photo, ix) => formData.append("photo" + ix, {uri: photo, name: "photo.png"}))
     formData.append("text", this.state.text)
     formData.append("user", this.props.deviceID)
-    Fetch.uploadDiary("/upload", formData)
-      .then(data => this.props.navigator.popToTop())
+    Fetch.uploadDiary("/upload", formData).then(data => this.props.navigator.popToTop())
   }
 
   render() {
     return (
-      <View style={styles.container} pointerEvents={this.state.loading ? "none" : "auto"}>
+      <KeyboardAvoidingView
+        behavior="padding"
+        style={styles.container}
+        keyboardVerticalOffset={15}
+        pointerEvents={this.state.loading ? "none" : "auto"}>
         <View style={styles.upper}>
-          <ImageSwiper photos={this.state.photos}/>
           <TextInput
             autoFocus={true}
             multiline={true}
+            placeholder="200文字まで"
             onChangeText={this.change.bind(this)}
             maxLength={Constants.maxMemoLength}
             style={styles.textInput}/>
-        </View>
-        <View style={styles.lower}>
           <TouchableWithoutFeedback onPress={this.submit.bind(this)}>
             <View style={styles.component}><Text style={styles.text}>投稿</Text></View>
           </TouchableWithoutFeedback>
@@ -66,7 +68,7 @@ export default class Memo extends Component {
             hidesWhenStopped={true}
             size="large"/>
         ) : null}
-      </View>
+      </KeyboardAvoidingView>
     )
   }
 

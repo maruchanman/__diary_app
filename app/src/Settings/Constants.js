@@ -1,6 +1,7 @@
 const Constants = {
   maxMemoLength: 200,
-  url: "http://127.0.0.1:5000/wondays"
+//  url: "http://localhost:5000/wondays"
+  url: "http://160.16.217.99/wondays"
 }
 
 export default Constants

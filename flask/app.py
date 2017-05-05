@@ -17,10 +17,11 @@ def diaries(userID):
     for diaryID, text, yyyymmdd in diary_list:
         year, month, day = ymd_to_date(yyyymmdd)
         data[diaryID] = {
-          "year": year, "month": smonth(month), "day": day, "text": text, "photos": []}
+          "year": year, "month": smonth(month), "day": day,
+          "text": text, "yyyymmdd": yyyymmdd, "photos": []}
     for diaryID, fname in photo_list:
         data[diaryID]["photos"].append(
-            "/Users/hacker/work/life/flask/photos/{}/{}.png".format(userID, fname))
+            "http://{}/photos/{}/{}.png".format(os.getenv("DB_HOST"), userID, fname))
     return jsonify(data)
 
 @app.route('/wondays/upload', methods=['POST'])

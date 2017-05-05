@@ -46,7 +46,7 @@ const Routes = {
       <Memo navigator={navigator} photos={route.photos} deviceID={deviceID} />),
     rightButton: (route, navigator) => <CloseButton navigator={navigator}/>,
     leftButton: (route, navigator) => <BackButton navigator={navigator}/>,
-    title: (route, navigator) => <Text style={styles.title}>メモ(200文字まで)</Text>
+    title: (route, navigator) => <Text style={styles.title}>メモ</Text>
   },
   initialRoute: 'Home'
 }

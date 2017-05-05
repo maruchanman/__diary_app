@@ -8,11 +8,11 @@ import Styles from '../Settings/Styles.js'
 const styles = Styles.ImageSwiper
 
 const ImageSwiper = props => (
-  <Swiper height={styles.image.width}>
+  <Swiper height={styles.image.height}>
     {props.photos.map((photo, ix) => (
       <Image
         key={ix}
-        resizeMode="contain"
+        resizeMode="cover"
         source={{uri: photo}}
         style={styles.image} />
     ))}

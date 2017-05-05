@@ -26,7 +26,7 @@ const Styles = {
     },
     title: {
       paddingTop: Constant.headerHeight / 10,
-      fontSize: 22,
+      fontSize: 20,
       color: Constant.accentColor,
       fontWeight: 'bold'
     }
@@ -58,13 +58,13 @@ const Styles = {
       flexDirection: 'column'
     },
     lower: {
-      backgroundColor: Constant.opacityColor,
       justifyContent: 'center',
       flex: 1,
       flexDirection: 'row'
     },
     component: {
       flex: 1,
+      backgroundColor: Constant.opacityColor,
       flexDirection: 'column',
       justifyContent: 'center'
     },
@@ -80,6 +80,7 @@ const Styles = {
     },
     textInput: {
       flex: 1,
+      fontSize: 18,
       paddingVertical: 20,
       paddingHorizontal: 40
     },
@@ -95,9 +96,9 @@ const Styles = {
   Photo: {
     photo: {
       flex: 0,
-      width: Constant.width / 3.1,
-      height: Constant.width / 3.1,
-      margin: 2
+      width: Constant.width / 3,
+      height: Constant.width / 3,
+      margin: 0
     },
     choiced: {
       width: '100%',
@@ -108,9 +109,9 @@ const Styles = {
   DiaryCard: {
     wrapper: {
       flex: 0,
-      width: Constant.width / 2.1,
-      height: Constant.width / 2.1,
-      margin: 2
+      width: Constant.width / 2,
+      height: Constant.width / 2,
+      margin: 0
     },
     image: {
       flex: 1,

@@ -32,7 +32,7 @@ export default class Home extends Component {
   render() {
     return (
       <ScrollView contentContainerStyle={styles.wrapper}>
-        {Object.keys(this.state.diaries).map((diaryID) =>
+        {Object.keys(this.state.diaries).sort((a, b) => a < b ? 1 : -1).map((diaryID) =>
           <DiaryCard
             key={diaryID} data={this.state.diaries[diaryID]} navigator={this.props.navigator}/>)}
       </ScrollView>

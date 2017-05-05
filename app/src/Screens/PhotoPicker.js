@@ -6,6 +6,7 @@ import {
   ScrollView,
   TouchableWithoutFeedback
 } from 'react-native'
+import ImageResizer from 'react-native-image-resizer'
 
 import Photo from '../Items/Photo.js'
 import Routes from '../Settings/Routes.js'
@@ -30,7 +31,7 @@ export default class PhotoPicker extends Component {
   }
 
   loadPhotos() {
-    CameraRoll.getPhotos({first: 25})
+    CameraRoll.getPhotos({first: 120})
       .then(data => this.setPhotos(data))
   }
 
@@ -47,7 +48,12 @@ export default class PhotoPicker extends Component {
     } else if (this.state.choice.length > 5) {
       alert("Up to 5 photos please")
     } else {
-      navigator.push(Object.assign(Routes.Memo, {photos: this.state.choice}))
+      const choice = []
+      this.state.choice.map(photo => {
+        ImageResizer.createResizedImage(photo, 640, 640, 'JPEG', 50, 0)
+          .then(uri => choice.push(uri))
+      })
+      navigator.push(Object.assign(Routes.Memo, {photos: choice}))
     }
   }
 
