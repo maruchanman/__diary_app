@@ -36,6 +36,22 @@ const Styles = {
       flexDirection: 'row',
       justifyContent: 'center',
       flexWrap: 'wrap'
+    },
+    tutorial: {
+      flex: 1,
+      position: 'relative',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center'  
+    },
+    message: {
+      color: Constant.accentColor  
+    },
+    icon: {
+      position: 'absolute',
+      color: "#FEB737",
+      top: 5,
+      right: 8,  
     }
   },
   Diary: {
@@ -145,3 +161,4 @@ const Styles = {
   }
 }
 export default Styles
+
