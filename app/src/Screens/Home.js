@@ -34,7 +34,7 @@ export default class Home extends Component {
   }
 
   render() {
-    if (this.state.diaries.length > 0) {
+    if (Object.keys(this.state.diaries).length > 0) {
       return (
         <ScrollView contentContainerStyle={styles.wrapper}>
           {Object.keys(this.state.diaries).sort((a, b) => a < b ? 1 : -1).map((diaryID) =>

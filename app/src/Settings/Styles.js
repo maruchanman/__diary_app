@@ -58,9 +58,10 @@ const Styles = {
     box: {
       flex: 1,
       flexDirection: 'column',
-      justifyContent: 'center'
+      justifyContent: 'flex-start'
     },
     text: {
+      textAlign: 'center',
       paddingVertical: 20,
       paddingHorizontal: 20
     }

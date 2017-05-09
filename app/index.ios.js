@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 import App from './src/App.js';
 
-export default class life extends Component {
+export default class wondays extends Component {
   render() {
     return (
       <App />
@@ -12,4 +12,4 @@ export default class life extends Component {
   }
 }
 
-AppRegistry.registerComponent('life', () => life);
+AppRegistry.registerComponent('wondays', () => wondays);

@@ -44,9 +44,9 @@ export default class PhotoPicker extends Component {
 
   next(navigator) {
     if (this.state.choice.length == 0) {
-      alert("Choose Photos")
+      alert("写真を選択してください")
     } else if (this.state.choice.length > 5) {
-      alert("Up to 5 photos please")
+      alert("写真は5枚までしか選択できません")
     } else {
       const choice = []
       this.state.choice.map(photo => {
