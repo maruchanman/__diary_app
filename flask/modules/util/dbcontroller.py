@@ -47,3 +47,14 @@ def select_diaries(userID):
         photo = cursor.fetchall()
     conn.close()
     return diary, photo
+
+def insert_checkin(userID):
+    sql = """
+      INSERT INTO wondays.logstream (userID, page) VALUES (%s, %s)
+    """
+    db = Connect()
+    conn = db.connect()
+    with conn.cursor() as cursor:
+        cursor.execute(sql, (userID, "launch"))
+    conn.commit()
+    conn.close()

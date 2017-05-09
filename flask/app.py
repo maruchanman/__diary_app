@@ -10,6 +10,11 @@ from modules.util.utils import *
 app = Flask(__name__)
 CURRENTPATH = os.path.dirname(__file__)
 
+@app.route("/wondays/launch", methods=["GET"])
+def checkin():
+    insert_checkin(request.args.get("userID"))
+    return "ok"
+
 @app.route("/wondays/<userID>", methods=["GET"])
 def diaries(userID):
     data = {}

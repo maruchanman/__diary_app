@@ -14,3 +14,11 @@ CREATE TABLE IF NOT EXISTS wondays.photo
   diaryID int(11),
   fname varchar(255)
 ) DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS wondays.logstream
+(
+  userID varchar(255),
+  page char(8),
+  value varchar(255),
+  timestamp timestamp
+) DEFAULT CHARSET=utf8;

@@ -24,6 +24,7 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
+    Fetch.launch(this.props.deviceID)
     Fetch.diaryFromUser(this.props.deviceID)
       .then(data => this.setState({diaries: data}))
   }

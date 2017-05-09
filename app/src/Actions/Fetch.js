@@ -13,9 +13,15 @@ function post(path, data) {
   ).then(res => res.json())
 }
 
+function launch(userID) {
+  fetch(Constants.url + "/launch?userID=" + userID)
+  return true
+}
+
 var Fetch = {
   diaryFromUser: (userID) => diaryFromUser(userID),
-  uploadDiary: (path, data) => post(path, data)
+  uploadDiary: (path, data) => post(path, data),
+  launch: (userID) => launch(userID)
 }
 
 export default Fetch
