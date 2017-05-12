@@ -157,8 +157,6 @@ const Styles = {
       padding: 0,
       margin: 0
     }
-  },
-  Memo: {
   }
 }
 export default Styles
